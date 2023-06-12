@@ -12,11 +12,19 @@ def index():
 @app.route('/dojos')
 def dojos():
     dojos = Dojo.get_all()
-    return render_template("index.html", dojo=dojos)
+    return render_template("index.html", all_dojos=dojos)
 
 # Creating a new Dojo on the Home Page
 @app.route('/create/dojo', methods=['POST'])
 def create_dojo():
-    Dojo.save(request.form)
+    Dojo.save(request.form)#problem?
     return redirect('/dojos')
+
+# Route for showing a Dojo
+@app.route('/dojo/<int:id>')
+def show_dojo(id):
+    data = {
+        "id" : id
+    }
+    return render_template('dojo.html', dojo = Dojo.get_one_ninja(data))
 

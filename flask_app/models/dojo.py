@@ -1,5 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-
+from .ninja import Ninja
 class Dojo:
     def __init__(self, data):
         self.id = data['id']
@@ -25,4 +25,9 @@ class Dojo:
         query = "INSERT INTO dojos (name) VALUES (%(name)s);"
         result = connectToMySQL('dojos_and_ninjas').query_db(query, data)
         return result
+
+    @classmethod
+    def get_one_ninja(cls, data):
+        query = "SELECT * FROM dojos LEFT JOIN ninjas on dojos.id = ninjas.dojo_id WHERE dojos.id = %(id)s;"
+        results = connectToMySQL('dojos_and_ninjas').query_db(query, data)
 
