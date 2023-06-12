@@ -11,7 +11,7 @@ class Dojo:
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM dojos;"
-        results = connectToMySQL('dojos_and_ninjas_schema').query_db(query)
+        results = connectToMySQL('dojos_and_ninjas').query_db(query)
         dojos = []
 
         # "d" is a representation of data
@@ -23,6 +23,6 @@ class Dojo:
     @classmethod
     def save(cls, data):
         query = "INSERT INTO dojos (name) VALUES (%(name)s);"
-        result = connectToMySQL('dojos_and_ninjas_schema').query_db(query, data)
+        result = connectToMySQL('dojos_and_ninjas').query_db(query, data)
         return result
 
