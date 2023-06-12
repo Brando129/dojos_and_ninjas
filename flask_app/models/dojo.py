@@ -17,3 +17,10 @@ class Dojo:
         for d in results:
             dojos.append(cls(d))
             return dojos
+
+    @classmethod
+    def save(cls, data):
+        query = "INSERT INTO dojos (name) VALUES (%(name)s);"
+        result = connectToMySQL('dojos_and_ninjas_schema').query_db(query, data)
+        return result
+
