@@ -15,11 +15,8 @@ def create_ninja():
     return redirect('/')
 
 # Route for editing an existing ninja
-# @app.route('/edit/ninja/<int:id>')
-# def edit_ninja(id):
-#     data = {
-#         "id": id
-#     }
+# @app.route('/ninjas/edit/<ninja_id>')
+# def edit_ninja(ninja_id):
 #     return render_template("edit_ninjas.html", )
 
 # Route for deleting a ninja
@@ -29,4 +26,4 @@ def destroy(id):
         "id": id
     }
     models_ninja.Ninja.destroy(data)
-    return redirect('/dojos')
+    return redirect('/ninjas')
