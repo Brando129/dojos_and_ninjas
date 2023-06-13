@@ -10,7 +10,9 @@ class Ninja:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
+    # Method for creating a new ninja  and assigning that ninja to a dojo
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES (%(first_name)s, %(last_name)s, %(age)s, %(dojo_id)s);"
+        query = """INSERT INTO ninjas (first_name, last_name, age, dojo_id)
+                VALUES (%(first_name)s, %(last_name)s, %(age)s, %(dojo_id)s);"""
         return connectToMySQL(db).query_db(query, data)
