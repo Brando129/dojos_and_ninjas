@@ -32,7 +32,9 @@ class Dojo:
     # Gets all ninjas from a certain Dojo in the database
     @classmethod
     def get_one_ninja(cls, data):
-        query = "SELECT * FROM dojos LEFT JOIN ninjas on dojos.id = ninjas.dojo_id WHERE dojos.id = %(id)s;"
+        query = """SELECT * FROM dojos LEFT JOIN ninjas on dojos.id = ninjas.dojo_id
+                WHERE dojos.id = %(id)s;"""
+
         results = connectToMySQL(db).query_db(query, data)
         print(results)
         dojo = cls(results[0])

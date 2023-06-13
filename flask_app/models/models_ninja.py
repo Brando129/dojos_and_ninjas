@@ -16,3 +16,9 @@ class Ninja:
         query = """INSERT INTO ninjas (first_name, last_name, age, dojo_id)
                 VALUES (%(first_name)s, %(last_name)s, %(age)s, %(dojo_id)s);"""
         return connectToMySQL(db).query_db(query, data)
+
+    # Class method for deleting a ninja
+    @classmethod
+    def destroy(cls, data):
+        query = "DELETE FROM ninjas WHERE id = %(id)s;"
+        return connectToMySQL(db).query_db(query, data)

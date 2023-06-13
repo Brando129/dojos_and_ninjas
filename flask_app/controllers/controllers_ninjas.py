@@ -13,3 +13,20 @@ def ninjas():
 def create_ninja():
     models_ninja.Ninja.save(request.form)
     return redirect('/')
+
+# Route for editing an existing ninja
+# @app.route('/edit/ninja/<int:id>')
+# def edit_ninja(id):
+#     data = {
+#         "id": id
+#     }
+#     return render_template("edit_ninjas.html", )
+
+# Route for deleting a ninja
+@app.route('/ninja/destroy/<int:id>')
+def destroy(id):
+    data = {
+        "id": id
+    }
+    models_ninja.Ninja.destroy(data)
+    return redirect('/dojos')
