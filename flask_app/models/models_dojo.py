@@ -14,13 +14,13 @@ class Dojo:
     @classmethod
     def get_all(cls):
         query = "SELECT * FROM dojos;"
-        results = connectToMySQL('dojos_and_ninjas').query_db(query)
+        results = connectToMySQL(db).query_db(query)
         dojos = []
 
         # "d" is a representation of data
         for d in results:
             dojos.append(cls(d))
-            return dojos
+        return dojos
 
     # Saves new data in Dojos in the database
     @classmethod
