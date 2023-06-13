@@ -1,5 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 
+db = "dojos_and_ninjas"
 class Ninja:
     def __init__(self, data):
         self.id = data['id']
@@ -12,5 +13,4 @@ class Ninja:
     @classmethod
     def save(cls, data):
         query = "INSERT INTO ninjas (first_name, last_name, age, dojo_id) VALUES (%(first_name)s, %(last_name)s, %(age)s, %(dojo_id)s);"
-        return connectToMySQL('dojos_and_ninjas').query_db(query, data)
-        
+        return connectToMySQL(db).query_db(query, data)
