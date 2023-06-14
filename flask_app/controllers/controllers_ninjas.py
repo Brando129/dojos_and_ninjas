@@ -26,4 +26,4 @@ def destroy(id):
         "id": id
     }
     models_ninja.Ninja.destroy(data)
-    return redirect('/ninjas')
+    return redirect('/dojos')
