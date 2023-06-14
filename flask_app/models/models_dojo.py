@@ -26,6 +26,7 @@ class Dojo:
     @classmethod
     def save(cls, data):
         query = "INSERT INTO dojos (name) VALUES (%(name)s);"
+        # result comes back as an id
         result = connectToMySQL(db).query_db(query, data)
         return result
 
@@ -34,7 +35,6 @@ class Dojo:
     def get_one_ninja(cls, data):
         query = """SELECT * FROM dojos LEFT JOIN ninjas on dojos.id = ninjas.dojo_id
                 WHERE dojos.id = %(id)s;"""
-
         results = connectToMySQL(db).query_db(query, data)
         print(results)
         dojo = cls(results[0])
