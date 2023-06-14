@@ -22,6 +22,12 @@ def edit_ninja(id):
     }
     return render_template("edit_ninjas.html", ninja = models_ninja.Ninja.get_one(data))
 
+# Route for updating the edited ninja
+@app.route('/ninja/update', methods=['POST'])
+def update():
+    models_ninja.Ninja.update(request.form)
+    return redirect('/dojos') #this url needs fixed
+
 # Route for deleting a ninja
 @app.route('/ninja/destroy/<int:id>')
 def destroy(id):

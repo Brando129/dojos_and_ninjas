@@ -20,14 +20,14 @@ class Ninja:
     #classmethod for selecting a ninja to edit
     @classmethod
     def get_one(cls, data):
-        query = "SELECT * FROM ninjas WHERE id = %(id)s";
+        query = "SELECT * FROM ninjas WHERE id = %(id)s;"
         result = connectToMySQL(db).query_db(query, data)
         return cls(result[0])
 
     #classmethod for updating the edited ninja
     @classmethod
     def update(cls, data):
-        query = """UPDATE ninjas INTO first_name=%(first_name)s, last_name=%(last_name)s,
+        query = """UPDATE ninjas SET first_name=%(first_name)s, last_name=%(last_name)s,
                 age=%(age)s, updated_at=NOW() WHERE id = %(id)s;"""
         return connectToMySQL(db).query_db(query, data)
 

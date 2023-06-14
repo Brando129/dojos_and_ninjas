@@ -17,7 +17,7 @@ def dojos():
 # Creating a new Dojo on the Home Page
 @app.route('/create/dojo', methods=['POST'])
 def create_dojo():
-    Dojo.save(request.form)#problem?
+    Dojo.save(request.form)
     return redirect('/dojos')
 
 # Route for showing a Dojo
